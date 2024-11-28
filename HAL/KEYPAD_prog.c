@@ -4,10 +4,10 @@
  *  Created on: Nov 24, 2024
  *      Author: User
  */
-#include "stdTypes.h"
-#include "errorState.h"
+#include "..\stdTypes.h"
+#include "..\errorState.h"
 #include<util/delay.h>
-#include"DIO_int.h"
+#include"..\MCAL\DIO_int.h"
 
 #include "KEYPAD_config.h"
 #include "KEYPAD_priv.h"

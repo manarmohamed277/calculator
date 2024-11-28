@@ -6,10 +6,10 @@
  */
 #include "stdTypes.h"
 #include"errorState.h"
-#include"DIO_int.h"
-#include"KEYPAD_int.h"
-#include"LCD_int.h"
-#include"app.h"
+#include"MCAL\DIO_int.h"
+#include"HAL\KEYPAD_int.h"
+#include"HAL\LCD_int.h"
+#include"application\app.h"
 int main(void){
 
 app();

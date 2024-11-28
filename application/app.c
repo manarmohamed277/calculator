@@ -4,12 +4,12 @@
  *  Created on: Nov 26, 2024
  *      Author: User
  */
-#include "stdTypes.h"
+#include "../stdTypes.h"
 #include<util/delay.h>
-#include"errorState.h"
-#include"DIO_int.h"
-#include"KEYPAD_int.h"
-#include"LCD_int.h"
+#include"../errorState.h"
+#include"../MCAL/DIO_int.h"
+#include"../HAL/KEYPAD_int.h"
+#include"../HAL/LCD_int.h"
 
 void arrToNum(u8*ptr1,u8*ptr2,u8 n1,u8 n2,u8 operation);
 void app(){
@@ -54,10 +54,10 @@ _delay_ms(100);
 LCD_enuClear();
  //check if pass is correct
 
-int flage=0;
+int flag=1;
 for(u8 i=0;i<pass_nums;i++){
-	if(pass_ch_nums_arr[i]==pass_nums_arr[i])
-		flage=1;
+	if(pass_ch_nums_arr[i]!=pass_nums_arr[i])
+		flag=0;
 	else
 		break;
 }
@@ -73,7 +73,7 @@ for(int i=0;i<3;i++){
 
 //PASS correct  enter calculator
 
-if(flage){
+if(flag){
 	_delay_ms(500);
 	LCD_enuClear();
 	_delay_ms(500);
@@ -91,7 +91,7 @@ u8 count1=0;
 u8 count2=0;
 u8 ONflage=0;
 //working
-while(flage){
+while(flag){
 	int operation=0;
 	u8 kpVal;
 	u8 first_num_arr[8];
@@ -99,6 +99,7 @@ while(flage){
 	u8 count1=0;
 	u8 count2=0;
 	u8 ONflage=0;
+	u8 n1eql=0;
 	// taking the first number
 while(1){
 do{
@@ -115,9 +116,11 @@ else if(kpVal=='=')
 {
 	for(int i=0;i<count1;i++)
 	{
-		LCD_enuDisplayNumPOS(first_num_arr,2,9);
-		break;
+		LCD_enuDisplayNumPOS(first_num_arr[i],2,8+i);
+
 	}
+	n1eql=1;
+	break;
 
 }
 else if(kpVal=='$')
@@ -134,7 +137,7 @@ LCD_enuDisplayNum(kpVal);
 
 // taking the second number
 
-while(!ONflage)
+while(!ONflage&&!n1eql)
 {
 
 	do{
@@ -235,20 +238,3 @@ void arrToNum(u8*ptr1,u8*ptr2,u8 n1,u8 n2,u8 operation)
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

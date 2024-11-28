@@ -4,10 +4,10 @@
  *  Created on: Nov 24, 2024
  *      Author: User
  */
-#include"stdTypes.h"
-#include"errorState.h"
+#include"..\stdTypes.h"
+#include"..\errorState.h"
 
-#include"DIO_int.h"
+#include"..\MCAL\DIO_int.h"
 
 #include"LCD_priv.h"
 #include"LCD_cofig.h"

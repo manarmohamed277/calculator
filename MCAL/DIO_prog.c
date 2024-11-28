@@ -6,8 +6,8 @@
  */
 #include"DIO_priv.h"
 #include"DIO_cofig.h"
-#include"errorState.h"
-#include "stdTypes.h"
+#include"..\errorState.h"
+#include "..\stdTypes.h"
 
 
 ES_ERROR DIO_enuInit(void){
